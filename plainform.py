@@ -14,7 +14,6 @@ Formidable forms formed with WTForms.
 
 """
 
-from babel import support
 from wtforms.i18n import messages_path
 from wtforms.form import Form
 from wtforms.fields import (
@@ -28,7 +27,7 @@ from wtforms.fields.html5 import (
 from wtforms.widgets.core import html_params, HTMLString
 
 
-VERSION = '0.1'
+VERSION = '0.2'
 
 
 class Translations:
@@ -36,6 +35,7 @@ class Translations:
         self.get_locales = get_locales
 
     def _get_translations(self):
+        from babel import support
         return support.Translations.load(
             messages_path(), self.get_locales(), domain='wtforms')
 
