@@ -1,0 +1,28 @@
+{% set theme = theme or '-'.join(themes[0]) %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="/static/css/style.css" rel="stylesheet" />
+    <link href="/static/css/themes/{{ theme }}.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav>
+      <h2>Themes</h2>
+      {% for category, themes in themes | groupby(0) | sort %}
+      <h3>{{ category }}</h3>
+      <ul>
+        {% for theme in themes %}
+        <li><a href="{{ url_for('index', theme='-'.join(theme)) }}">{{ theme.1 }}</a></li>
+        {% endfor %}
+      </ul>
+      {% endfor %}
+    </nav>
+    <aside>
+      {{ theme }}
+    </aside>
+    <main>
+      {{ form }}
+    </main>
+  </body>
+</html>

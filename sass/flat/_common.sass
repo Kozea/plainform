@@ -1,0 +1,99 @@
+form
+  background: transparentize(#444, 0.98)
+  color: #444
+  margin: auto
+  padding: 1em 2em
+  width: 75%
+
+  p + input[type=checkbox], p + input[type=radio]
+    margin-top: -1em
+    
+    + label,
+      margin-top: -1em
+
+
+label
+  display: inline-block
+  margin: 1em 0 0.2em 0
+
+
+input, select, textarea
+  -webkit-appearance: none
+  background: transparentize(white, 0.8)
+  border: 1px solid gray
+  border-radius: 2px
+  box-shadow: 0 0 1em transparentize(#444, 0.9)
+  box-sizing: border-box
+  display: block
+  font-size: 1em
+  padding: 0.3em
+  transition: background 0.5s, border-color 0.5s, color 0.5s, box-shadow 1s
+  width: 100%
+
+  &:focus
+    border-color: saturate($color, 10%)
+    box-shadow: 0 0 1em transparentize(saturate($color, 100%), 0.9)
+    outline: none
+
+
+select
+  cursor: pointer
+  overflow: auto
+
+
+input
+  &[type=submit]
+    background-color: $color
+    border: none
+    color: #eee
+    cursor: pointer
+    padding: 0.5em
+    margin: 2em auto
+    width: 80%
+
+  &[type=range]
+    background: gray
+    border: none
+    border-radius: 1px
+    box-shadow: none
+    color: gray
+    cursor: pointer
+    height: 3px
+    margin: 0.5em 0
+    padding: 0
+
+    &:focus
+      background: $color
+      color: $color
+      outline: none
+
+  &[type=checkbox], &[type=radio]
+    border-style: solid
+    cursor: pointer
+    display: inline-block
+    margin: 1em 0 0 0
+    height: 1em
+    width: 1em
+
+    &:checked
+      background: $color
+
+    + label
+      box-sizing: border-box
+      cursor: pointer
+      margin: 0.5em -1em
+      padding-left: 1.5em
+      width: 100%
+
+      + input[type=checkbox], + input[type=radio]
+        margin-top: 0
+
+  &[type=checkbox]
+    border-radius: 0
+
+  &[type=radio]
+    border-radius: 0.5em
+
+  + input[type=checkbox],
+  + input[type=radio]
+    margin-top: 2em

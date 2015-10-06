@@ -1,0 +1,81 @@
+form
+  color: #444
+  padding: 1em
+
+  *
+    clear: left
+
+  p
+    padding: 1em 0 0.5em 0
+
+    + input[type=checkbox], + input[type=radio]
+      margin-top: -1em
+    
+      + label,
+        margin-top: -1em
+
+
+label
+  background: $color
+  color: white
+  display: inline-block
+  margin-top: 1em
+  padding: 0.25em 0.5em
+
+
+input, select, textarea
+  -webkit-appearance: none
+  background: white
+  border: 0.25em solid $color
+  border-radius: 0
+  box-sizing: border-box
+  display: block
+  font-size: 1em
+  margin: 0
+  padding: 0.5em
+  width: 100%
+
+  &:focus
+    outline: none
+
+  &[type=checkbox], &[type=radio]
+    background: darken($color, 20%)
+    height: 1.75em
+    float: left
+    margin: 1em 0 0 0
+    transition: background 0.2s
+    width: 1.75em
+
+    &:checked
+      background: white
+
+    + label
+      clear: none
+      float: left
+      line-height: 1.75em
+      margin: 1em 0 0 0
+      padding: 0 1em 0 0.75em
+
+      + input[type=checkbox], + input[type=radio]
+        margin-top: 0.2em
+
+        + label
+          margin-top: 0.2em
+
+      + label
+        clear: left
+        float: left
+
+  &[type=radio]
+    border-radius: 1em 0 0 1em
+
+  &[type=range]
+    border-width: 0.125em
+    height: 0
+    margin: 1em 0
+    padding: 0
+
+  &[type=submit]
+    background-color: $color
+    color: white
+    margin-top: 2em

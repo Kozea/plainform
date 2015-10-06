@@ -1,0 +1,81 @@
+@import url(http://fonts.googleapis.com/css?family=Oxygen:400,300);
+
+html {
+  background: #e3e3e3;
+  font-family: "Oxygen";
+  margin: 0;
+}
+
+body {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 0.3em;
+  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 2em auto;
+  padding: 2em;
+}
+
+nav {
+  background: rgba(255, 255, 255, 0.2);
+  color: #444;
+  height: 2.75em;
+  left: 1em;
+  opacity: 0.2;
+  overflow: hidden;
+  top: 1em;
+  transition: opacity 0.5s;
+  position: fixed;
+}
+
+nav:hover {
+  height: auto;
+  opacity: 1;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: block;
+}
+
+nav h2 {
+  background: #444;
+  color: #eee;
+  font-weight: 300;
+  font-size: 1.5em;
+  margin: 0;
+  padding: 0.25em 0.5em;
+}
+
+nav h3 {
+  background: #ddd;
+  border-bottom: 1px solid #bbb;
+  border-top: 1px solid #bbb;
+  font-weight: 300;
+  font-size: 1.2em;
+  margin: 0;
+  padding: 0.25em;
+  text-align: center;
+}
+
+nav a {
+  color: inherit;
+  display: block;
+  padding: 0.25em 1em;
+  text-decoration: inherit;
+}
+
+nav a:hover,
+nav a:focus {
+  background: #ddd;
+}
+
+aside {
+  bottom: 1em;
+  left: 1em;
+  opacity: 0.2;
+  position: fixed;
+}
