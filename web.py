@@ -27,6 +27,9 @@ class Form(Form):
     multiselect = SelectMultipleField(
         'Mega choice', choices=[
             ('select1', 'Select 1'), ('select2', 'Select 2')])
+    checklist = CheckboxListField(
+        'Hyper choice', choices=[
+            ('select1', 'Select 1'), ('select2', 'Select 2')])
     image = FileField('Image')
     hidden = HiddenField('Ghost')
     textarea = TextAreaField('Long text')

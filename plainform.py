@@ -140,6 +140,10 @@ class SelectMultipleField(SelectMultipleField, SelectField):
     pass
 
 
+class CheckboxListField(RadioField):
+    option_widget = BooleanField.widget
+
+
 class SubmitField(SubmitField, Field):
     def __call__(self, **kwargs):
         kwargs.update(self.kwargs)
