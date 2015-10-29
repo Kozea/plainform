@@ -61,7 +61,7 @@ class Form(Form):
         if 'method' not in self.kwargs:
             self.kwargs['method'] = 'POST'
         super().__init__(formdata, obj, prefix, meta)
-        
+
     def __call__(self):
         if 'enctype' not in self.kwargs:
             for field in self:
@@ -90,7 +90,7 @@ class Field(Field):
             if not flag.startswith('_'):
                 kwargs[flag] = getattr(self.flags, flag)
         return self._render(**kwargs)
-        
+
     def _render(self, **kwargs):
         if self.errors:
             kwargs['data-error'] = 'error'
