@@ -32,6 +32,7 @@ class Form(Form):
     textarea = TextAreaField('Long text')
     search = SearchField('Search')
     phone = TelField('Phone')
+    color = ColorField('Color')
     url = URLField('URL')
     email = EmailField('Email')
     date = DateField('Date')

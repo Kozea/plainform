@@ -24,6 +24,7 @@ from wtforms.fields.html5 import (
     SearchField, TelField, URLField, EmailField, DateField, DateTimeField,
     DateTimeLocalField, IntegerField, DecimalField, IntegerRangeField,
     DecimalRangeField)
+from wtforms.widgets.html5 import ColorInput
 from wtforms.widgets.core import html_params, HTMLString
 
 
@@ -169,6 +170,10 @@ class SearchField(SearchField, Field):
 
 class TelField(TelField, Field):
     pass
+
+
+class ColorField(StringField, Field):
+    widget = ColorInput()
 
 
 class URLField(URLField, Field):
