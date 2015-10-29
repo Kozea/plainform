@@ -168,6 +168,12 @@ class TextAreaField(TextAreaField, Field):
     pass
 
 
+class HTMLField(TextAreaField):
+    def _render(self, **kwargs):
+        kwargs['accept'] = 'html'
+        return super()._render(**kwargs)
+
+
 class SearchField(SearchField, Field):
     pass
 

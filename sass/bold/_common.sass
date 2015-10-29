@@ -23,7 +23,11 @@ label
   padding: 0.25em 0.5em
 
 
-input, select, textarea
+*[contenteditable]
+  min-height: 2em
+
+
+input, select, textarea, *[contenteditable]
   -webkit-appearance: none
   background: white
   border: 0.25em solid $color

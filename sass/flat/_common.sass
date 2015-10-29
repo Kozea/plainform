@@ -17,7 +17,7 @@ label
   margin: 1em 0 0.2em 0
 
 
-input, select, textarea
+input, select, textarea, *[contenteditable]
   -webkit-appearance: none
   background: transparentize(white, 0.8)
   border: 1px solid gray
@@ -34,6 +34,10 @@ input, select, textarea
     border-color: saturate($color, 10%)
     box-shadow: 0 0 1em transparentize(saturate($color, 100%), 0.9)
     outline: none
+
+
+*[contenteditable]
+  min-height: 2em
 
 
 select
