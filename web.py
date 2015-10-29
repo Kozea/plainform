@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import os
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 from plainform import *
 
@@ -33,6 +33,7 @@ class Form(Form):
     image = FileField('Image')
     hidden = HiddenField('Ghost')
     textarea = TextAreaField('Long text')
+    html = HTMLField('HTML')
     search = SearchField('Search')
     phone = TelField('Phone')
     color = ColorField('Color')
@@ -48,10 +49,10 @@ class Form(Form):
     submit = SubmitField('Try!')
 
 
-@app.route('/')
-@app.route('/<theme>')
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/<theme>', methods=['GET', 'POST'])
 def index(theme=None):
-    form = Form(method='GET', class_='form')
+    form = Form(request.form, class_='form')
     return render_template(
         'index.html', themes=themes, theme=theme, form=form())
 
