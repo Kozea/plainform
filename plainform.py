@@ -28,7 +28,7 @@ from wtforms.widgets.html5 import ColorInput
 from wtforms.widgets.core import html_params, HTMLString
 
 
-VERSION = '0.2'
+VERSION = '0.3'
 
 
 class Translations:
