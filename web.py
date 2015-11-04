@@ -16,7 +16,7 @@ themes = [
 class Form(Form):
     name = StringField('Name', class_='class', data_string='data')
     password = PasswordField('Password')
-    check1 = BooleanField('Check 1', checked=True)
+    check1 = BooleanField('Check 1')
     check2 = BooleanField('Check 2')
     radio = RadioField(
         'Choice', choices=[('radio1', 'Radio 1'), ('radio2', 'Radio 2')],
@@ -52,7 +52,7 @@ class Form(Form):
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/<theme>', methods=['GET', 'POST'])
 def index(theme=None):
-    form = Form(request.form, class_='form')
+    form = Form(request.form, attributes={'class': 'form'})
     return render_template(
         'index.html', themes=themes, theme=theme, form=form())
 

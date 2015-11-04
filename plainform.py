@@ -57,20 +57,20 @@ class Translations:
 
 class Form(Form):
     def __init__(self, formdata=None, obj=None, prefix='', data=None,
-                 meta=None, **kwargs):
-        self.kwargs = kwargs
-        if 'method' not in self.kwargs:
-            self.kwargs['method'] = 'POST'
+                 meta=None, attributes=None, **kwargs):
+        self.attributes = attributes or {}
+        if 'method' not in self.attributes:
+            self.attributes['method'] = 'POST'
         super().__init__(formdata, obj, prefix, meta, **kwargs)
 
     def __call__(self):
-        if 'enctype' not in self.kwargs:
+        if 'enctype' not in self.attributes:
             for field in self:
                 if isinstance(field, FileField):
-                    self.kwargs['enctype'] = 'multipart/form-data'
+                    self.attributes['enctype'] = 'multipart/form-data'
                     break
         return HTMLString('<form {}>\n{}\n</form>'.format(
-            html_params(**self.kwargs), '\n'.join(field() for field in self)))
+            html_params(**self.attributes), '\n'.join(field() for field in self)))
 
     def _get_translations(self):
         return None
