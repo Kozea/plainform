@@ -140,7 +140,7 @@ class SelectMultipleField(SelectMultipleField, SelectField):
     pass
 
 
-class CheckboxListField(RadioField):
+class CheckboxListField(RadioField, SelectMultipleField):
     option_widget = BooleanField.widget
 
 
