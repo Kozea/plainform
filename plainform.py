@@ -61,7 +61,7 @@ class Form(Form):
         self.kwargs = kwargs
         if 'method' not in self.kwargs:
             self.kwargs['method'] = 'POST'
-        super().__init__(formdata, obj, prefix, meta)
+        super().__init__(formdata, obj, prefix, meta, **kwargs)
 
     def __call__(self):
         if 'enctype' not in self.kwargs:
