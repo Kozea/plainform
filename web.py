@@ -30,6 +30,7 @@ class Form(Form):
     checklist = CheckboxListField(
         'Hyper choice', choices=[
             ('select1', 'Select 1'), ('select2', 'Select 2')])
+    button = ButtonField('Useless button')
     image = FileField('Image')
     hidden = HiddenField('Ghost')
     textarea = TextAreaField('Long text')

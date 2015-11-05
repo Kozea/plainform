@@ -156,6 +156,12 @@ class SubmitField(SubmitField, Field):
         return self.widget(self, **kwargs)
 
 
+class ButtonField(SubmitField):
+    def __call__(self, **kwargs):
+        self.widget.input_type = 'button'
+        return super().__call__(**kwargs)
+
+
 class StringField(StringField, Field):
     pass
 
