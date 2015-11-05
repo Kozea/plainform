@@ -125,6 +125,9 @@ class FileField(FileField, Field):
 class RadioField(RadioField, Field):
     def __call__(self, **kwargs):
         kwargs.update(self.kwargs)
+        return self._render(**kwargs)
+
+    def _render(self, **kwargs):
         return HTMLString('<p>{}</p>'.format(self.label.text) + '\n'.join(
             '{}\n{}'.format(field.widget(field, **kwargs), field.label)
             for field in self))
@@ -140,8 +143,11 @@ class SelectMultipleField(SelectMultipleField, SelectField):
     pass
 
 
-class CheckboxListField(RadioField, SelectMultipleField):
+class CheckboxListField(SelectMultipleField):
     option_widget = BooleanField.widget
+
+    def _render(self, **kwargs):
+        return RadioField._render(self, **kwargs)
 
 
 class SubmitField(SubmitField, Field):
