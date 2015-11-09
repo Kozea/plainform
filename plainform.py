@@ -158,8 +158,9 @@ class SubmitField(SubmitField, Field):
 
 class ButtonField(SubmitField):
     def __call__(self, **kwargs):
-        self.widget.input_type = 'button'
-        return super().__call__(**kwargs)
+        kwargs.update(self.kwargs)
+        return HTMLString('<button {}>{}</button>'.format(
+            html_params(**kwargs), self.label.text))
 
 
 class StringField(StringField, Field):
