@@ -1,0 +1,28 @@
+{
+  "name": "plainform",
+  "version": "0.8.0",
+  "description": "Formidable forms formed with WTForms.",
+  "main": "coffee/plainform.js",
+  "scripts": {
+    "build-js": "cat coffee/*.coffee | coffee -c --stdio > coffee/plainform.js && cp -f coffee/plainform.js demo/static/",
+    "build-css": "pushd sass; for d in *; do node-sass $d/  -o ../demo/static/css/themes/$d/ ; done; popd"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kozea/plainform.git"
+  },
+  "keywords": [
+    "html",
+    "forms"
+  ],
+  "author": "Guillaume Ayoub <guillaume.ayoub@kozea.fr>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Kozea/plainform/issues"
+  },
+  "files": [
+    "cofee/plainform.js",
+    "sass/"
+  ],
+  "homepage": "https://github.com/Kozea/plainform#readme"
+}

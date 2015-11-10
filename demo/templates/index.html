@@ -14,7 +14,7 @@
       <h3>{{ category }}</h3>
       <ul>
         {% for theme in themes %}
-        <li><a href="{{ url_for('index', theme='-'.join(theme)) }}">{{ theme.1 }}</a></li>
+        <li><a href="{{ url_for('index', theme='/'.join(theme)) }}">{{ theme.1 }}</a></li>
         {% endfor %}
       </ul>
       {% endfor %}

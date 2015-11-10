@@ -1,0 +1,98 @@
+form {
+  background: rgba(68, 68, 68, 0.02);
+  color: #444;
+  margin: auto;
+  padding: 1em 2em;
+  width: 75%; }
+  form p + input[type=checkbox], form p + input[type=radio] {
+    margin-top: -1em; }
+    form p + input[type=checkbox] + label, form p + input[type=radio] + label {
+      margin-top: -1em; }
+
+label {
+  display: inline-block;
+  margin: 1em 0 0.2em 0; }
+
+input, select, textarea, *[contenteditable] {
+  -webkit-appearance: none;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid gray;
+  border-radius: 2px;
+  box-shadow: 0 0 1em rgba(68, 68, 68, 0.1);
+  box-sizing: border-box;
+  display: block;
+  font-size: 1em;
+  padding: 0.3em;
+  transition: background 0.5s, border-color 0.5s, color 0.5s, box-shadow 1s;
+  width: 100%; }
+  input:focus, select:focus, textarea:focus, *[contenteditable]:focus {
+    border-color: #3d6aff;
+    box-shadow: 0 0 1em rgba(61, 106, 255, 0.1);
+    outline: none; }
+
+*[contenteditable] {
+  min-height: 2em; }
+
+select {
+  cursor: pointer;
+  overflow: auto; }
+
+input[type=submit] {
+  background-color: #3d6aff;
+  border: none;
+  color: #eee;
+  cursor: pointer;
+  padding: 0.5em;
+  margin: 2em auto;
+  width: 80%; }
+
+input[type=range] {
+  background: gray;
+  border: none;
+  border-radius: 1px;
+  box-shadow: none;
+  color: gray;
+  cursor: pointer;
+  height: 3px;
+  margin: 0.5em 0;
+  padding: 0; }
+  input[type=range]:focus {
+    background: #3d6aff;
+    color: #3d6aff;
+    outline: none; }
+
+input[type=checkbox], input[type=radio] {
+  border-style: solid;
+  cursor: pointer;
+  display: inline-block;
+  margin: 1em 0 0 0;
+  height: 1em;
+  width: 1em; }
+  input[type=checkbox]:checked, input[type=radio]:checked {
+    background: #3d6aff; }
+  input[type=checkbox] + label, input[type=radio] + label {
+    box-sizing: border-box;
+    cursor: pointer;
+    margin: 0.5em -1em;
+    padding-left: 1.5em;
+    width: 100%; }
+    input[type=checkbox] + label + input[type=checkbox], input[type=checkbox] + label + input[type=radio], input[type=radio] + label + input[type=checkbox], input[type=radio] + label + input[type=radio] {
+      margin-top: 0; }
+
+input[type=checkbox] {
+  border-radius: 0; }
+
+input[type=color] {
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  height: 2em;
+  width: 2em; }
+
+input[type=radio] {
+  border-radius: 0.5em; }
+
+input + input[type=checkbox],
+input + input[type=radio] {
+  margin-top: 2em; }

@@ -13,7 +13,6 @@ PlainForm
 Formidable forms formed with WTForms.
 
 """
-
 from wtforms.i18n import messages_path
 from wtforms.form import Form
 from wtforms.fields import (
@@ -27,8 +26,7 @@ from wtforms.fields.html5 import (
 from wtforms.widgets.html5 import ColorInput
 from wtforms.widgets.core import html_params, HTMLString
 
-
-VERSION = '0.7'
+__version__ = '0.8.0'
 
 
 class Translations:
