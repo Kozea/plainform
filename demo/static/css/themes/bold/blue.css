@@ -1,0 +1,75 @@
+form {
+  color: #444;
+  padding: 1em; }
+  form * {
+    clear: left; }
+  form p {
+    padding: 1em 0 0.5em 0; }
+    form p + input[type=checkbox], form p + input[type=radio] {
+      margin-top: -1em; }
+      form p + input[type=checkbox] + label, form p + input[type=radio] + label {
+        margin-top: -1em; }
+
+label {
+  background: #339;
+  color: white;
+  display: inline-block;
+  margin-top: 1em;
+  padding: 0.25em 0.5em; }
+
+*[contenteditable] {
+  min-height: 2em; }
+
+input, select, textarea, *[contenteditable] {
+  -webkit-appearance: none;
+  background: white;
+  border: 0.25em solid #339;
+  border-radius: 0;
+  box-sizing: border-box;
+  display: block;
+  font-size: 1em;
+  margin: 0;
+  padding: 0.5em;
+  width: 100%; }
+  input:focus, select:focus, textarea:focus, *[contenteditable]:focus {
+    outline: none; }
+  input[type=checkbox], input[type=radio], select[type=checkbox], select[type=radio], textarea[type=checkbox], textarea[type=radio], *[contenteditable][type=checkbox], *[contenteditable][type=radio] {
+    background: #19194d;
+    height: 1.75em;
+    float: left;
+    margin: 1em 0 0 0;
+    transition: background 0.2s;
+    width: 1.75em; }
+    input[type=checkbox]:checked, input[type=radio]:checked, select[type=checkbox]:checked, select[type=radio]:checked, textarea[type=checkbox]:checked, textarea[type=radio]:checked, *[contenteditable][type=checkbox]:checked, *[contenteditable][type=radio]:checked {
+      background: white; }
+    input[type=checkbox] + label, input[type=radio] + label, select[type=checkbox] + label, select[type=radio] + label, textarea[type=checkbox] + label, textarea[type=radio] + label, *[contenteditable][type=checkbox] + label, *[contenteditable][type=radio] + label {
+      clear: none;
+      float: left;
+      line-height: 1.75em;
+      margin: 1em 0 0 0;
+      padding: 0 1em 0 0.75em; }
+      input[type=checkbox] + label + input[type=checkbox], input[type=checkbox] + label + input[type=radio], input[type=radio] + label + input[type=checkbox], input[type=radio] + label + input[type=radio], select[type=checkbox] + label + input[type=checkbox], select[type=checkbox] + label + input[type=radio], select[type=radio] + label + input[type=checkbox], select[type=radio] + label + input[type=radio], textarea[type=checkbox] + label + input[type=checkbox], textarea[type=checkbox] + label + input[type=radio], textarea[type=radio] + label + input[type=checkbox], textarea[type=radio] + label + input[type=radio], *[contenteditable][type=checkbox] + label + input[type=checkbox], *[contenteditable][type=checkbox] + label + input[type=radio], *[contenteditable][type=radio] + label + input[type=checkbox], *[contenteditable][type=radio] + label + input[type=radio] {
+        margin-top: 0.2em; }
+        input[type=checkbox] + label + input[type=checkbox] + label, input[type=checkbox] + label + input[type=radio] + label, input[type=radio] + label + input[type=checkbox] + label, input[type=radio] + label + input[type=radio] + label, select[type=checkbox] + label + input[type=checkbox] + label, select[type=checkbox] + label + input[type=radio] + label, select[type=radio] + label + input[type=checkbox] + label, select[type=radio] + label + input[type=radio] + label, textarea[type=checkbox] + label + input[type=checkbox] + label, textarea[type=checkbox] + label + input[type=radio] + label, textarea[type=radio] + label + input[type=checkbox] + label, textarea[type=radio] + label + input[type=radio] + label, *[contenteditable][type=checkbox] + label + input[type=checkbox] + label, *[contenteditable][type=checkbox] + label + input[type=radio] + label, *[contenteditable][type=radio] + label + input[type=checkbox] + label, *[contenteditable][type=radio] + label + input[type=radio] + label {
+          margin-top: 0.2em; }
+      input[type=checkbox] + label + label, input[type=radio] + label + label, select[type=checkbox] + label + label, select[type=radio] + label + label, textarea[type=checkbox] + label + label, textarea[type=radio] + label + label, *[contenteditable][type=checkbox] + label + label, *[contenteditable][type=radio] + label + label {
+        clear: left;
+        float: left; }
+  input[type=color], select[type=color], textarea[type=color], *[contenteditable][type=color] {
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    height: 2em;
+    width: 2em; }
+  input[type=radio], select[type=radio], textarea[type=radio], *[contenteditable][type=radio] {
+    border-radius: 1em 0 0 1em; }
+  input[type=range], select[type=range], textarea[type=range], *[contenteditable][type=range] {
+    border-width: 0.125em;
+    height: 0;
+    margin: 1em 0;
+    padding: 0; }
+  input[type=submit], select[type=submit], textarea[type=submit], *[contenteditable][type=submit] {
+    background-color: #339;
+    color: white;
+    margin-top: 2em; }

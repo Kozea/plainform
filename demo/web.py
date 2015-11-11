@@ -7,10 +7,13 @@ from plainform import *
 
 
 app = Flask(__name__)
+
+_theme_dir = os.path.join(os.path.dirname(__file__), 'static', 'css', 'themes')
 themes = [
-    theme[:-4].split('-', 1) for theme in os.listdir(
-        os.path.join(os.path.dirname(__file__), 'static', 'css', 'themes'))
-    if theme.endswith('.css')]
+    (theme, color[:-4])
+    for theme in os.listdir(_theme_dir)
+    for color in os.listdir(os.path.join(_theme_dir, theme))
+    if color.endswith('.css')]
 
 
 class Form(Form):
@@ -51,7 +54,7 @@ class Form(Form):
 
 
 @app.route('/', methods=['GET', 'POST'])
-@app.route('/<theme>', methods=['GET', 'POST'])
+@app.route('/<path:theme>', methods=['GET', 'POST'])
 def index(theme=None):
     form = Form(request.form, attributes={'class': 'form'})
     return render_template(
