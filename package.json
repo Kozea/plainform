@@ -21,7 +21,7 @@
     "url": "https://github.com/Kozea/plainform/issues"
   },
   "files": [
-    "cofee/plainform.js",
+    "coffee/plainform.js",
     "sass/"
   ],
   "homepage": "https://github.com/Kozea/plainform#readme"
