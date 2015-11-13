@@ -1,0 +1,22 @@
+{
+  "name": "plainform",
+  "version": "0.8",
+  "homepage": "https://github.com/Kozea/plainform",
+  "authors": [
+    "Yohann Rebattu <yohann.rebattu@kozea.fr>"
+  ],
+  "description": "Unleash the full power of plainform with style and JS",
+  "main": "plainform.js",
+  "moduleType": [],
+  "keywords": [
+    "form"
+  ],
+  "license": "BSD",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
