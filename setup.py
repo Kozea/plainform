@@ -38,7 +38,7 @@ setup(
     py_modules=['plainform'],
     provides=['plainform'],
     keywords=['html', 'forms'],
-    install_requires=['wtforms>=2.0'],
+    install_requires=['wtforms>=2.1'],
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Environment :: Web Environment',

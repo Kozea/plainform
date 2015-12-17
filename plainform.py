@@ -26,7 +26,7 @@ from wtforms.fields.html5 import (
 from wtforms.widgets.html5 import ColorInput
 from wtforms.widgets.core import html_params, HTMLString
 
-__version__ = '0.8.0'
+__version__ = '0.9.0'
 
 
 class Translations:
@@ -76,12 +76,13 @@ class Form(Form):
 
 class Field(Field):
     def __init__(self, label=None, validators=None, filters=(), description='',
-                 id=None, default=None, widget=None, _form=None, _name=None,
-                 _prefix='', _translations=None, _meta=None, **kwargs):
+                 id=None, default=None, widget=None, render_kw=None,
+                 _form=None, _name=None, _prefix='', _translations=None,
+                 _meta=None, **kwargs):
         self.kwargs = kwargs
         super().__init__(
             label, validators, filters, description, id, default, widget,
-            _form, _name, _prefix, _translations, _meta)
+            render_kw, _form, _name, _prefix, _translations, _meta)
 
     def __call__(self, **kwargs):
         kwargs.update(self.kwargs)
