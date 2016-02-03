@@ -18,7 +18,7 @@ from wtforms.form import Form
 from wtforms.fields import (
     Field, BooleanField, FileField, RadioField, SelectField,
     SelectMultipleField, SubmitField, StringField, HiddenField,
-    PasswordField, TextAreaField)
+    PasswordField, TextAreaField, FormField)
 from wtforms.fields.html5 import (
     SearchField, TelField, URLField, EmailField, DateField, DateTimeField,
     DateTimeLocalField, IntegerField, DecimalField, IntegerRangeField,
@@ -57,6 +57,7 @@ class Form(Form):
     def __init__(self, formdata=None, obj=None, prefix='', data=None,
                  meta=None, attributes=None, **kwargs):
         self.attributes = attributes or {}
+        self.grouped_fields = []
         if 'method' not in self.attributes:
             self.attributes['method'] = 'POST'
         super().__init__(formdata, obj, prefix, meta, **kwargs)
@@ -67,11 +68,38 @@ class Form(Form):
                 if isinstance(field, FileField):
                     self.attributes['enctype'] = 'multipart/form-data'
                     break
+        html = []
+        for fieldset in getattr(self, 'fieldsets', []):
+            fieldset.fields = []
+            for f in fieldset._fields:
+                field = self._fields.get(f, None)
+                if field:
+                    fieldset.fields.append(field)
+                    if 'disabled' in fieldset.kwargs:
+                        field.kwargs['disabled'] = 'disabled'
+                    self.grouped_fields.append(field)
+            html.append(fieldset.render())
+        html.append('\n'.join(field() for field in self if
+                              field not in self.grouped_fields))
         return HTMLString('<form {}>\n{}\n</form>'.format(
-            html_params(**self.attributes), '\n'.join(field() for field in self)))
+            html_params(**self.attributes), '\n'.join(html)))
 
     def _get_translations(self):
         return None
+
+
+class FieldSet(object):
+    """Wraps fields in a fieldset."""
+    def __init__(self, fields, legend='', **kwargs):
+        self.kwargs = kwargs
+        self._fields = fields
+        self.legend = legend
+
+    def render(self):
+        return HTMLString("<fieldset {}>{}\n{}</fieldset>".format(
+            html_params(**self.kwargs),
+            "<legend>{}</legend>".format(self.legend) if self.legend else '',
+            '\n'.join(field() for field in self.fields)))
 
 
 class Field(Field):
