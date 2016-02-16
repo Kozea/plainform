@@ -158,6 +158,9 @@ class SubmitField(SubmitField, Field):
 class ButtonField(SubmitField):
     def __call__(self, **kwargs):
         kwargs.update(self.kwargs)
+        return self._render(**kwargs)
+
+    def _render(self, **kwargs):
         return HTMLString('<button {}>{}</button>'.format(
             html_params(**kwargs), self.label.text))
 
