@@ -77,11 +77,11 @@ class Form(Form):
 
 class Label(Label):
     def __init__(self, *args, **kwargs):
-        self.flags = {}
+        self.js_options = {}
         super().__init__(*args, **kwargs)
 
     def __call__(self, text=None, **kwargs):
-        for name, value in self.flags.items():
+        for name, value in self.js_options.items():
             kwargs[name] = value
         return super().__call__(text, **kwargs)
 
@@ -104,7 +104,8 @@ class Field(Field):
             if not flag.startswith('_'):
                 flag_value = getattr(self.flags, flag)
                 kwargs[flag] = flag_value
-                self.label.flags.update({flag: flag_value})
+        if self.flags.required:
+            self.label.js_options.update({'data-required': 'required'})
         return self._render(**kwargs)
 
     def _render(self, **kwargs):
