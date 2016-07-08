@@ -19,6 +19,7 @@ from wtforms.fields import (
     Field, BooleanField, FileField, RadioField, SelectField,
     SelectMultipleField, SubmitField, StringField, HiddenField,
     PasswordField, TextAreaField)
+from wtforms.fields.core import Label
 from wtforms.fields.html5 import (
     SearchField, TelField, URLField, EmailField, DateField, DateTimeField,
     DateTimeLocalField, IntegerField, DecimalField, IntegerRangeField,
@@ -74,6 +75,17 @@ class Form(Form):
         return None
 
 
+class Label(Label):
+    def __init__(self, *args, **kwargs):
+        self.js_options = {}
+        super().__init__(*args, **kwargs)
+
+    def __call__(self, text=None, **kwargs):
+        for name, value in self.js_options.items():
+            kwargs[name] = value
+        return super().__call__(text, **kwargs)
+
+
 class Field(Field):
     def __init__(self, label=None, validators=None, filters=(), description='',
                  id=None, default=None, widget=None, render_kw=None,
@@ -83,12 +95,17 @@ class Field(Field):
         super().__init__(
             label, validators, filters, description, id, default, widget,
             render_kw, _form, _name, _prefix, _translations, _meta)
+        self.label = Label(self.id, label if label is not None
+                           else self.gettext(_name.replace('_', ' ').title()))
 
     def __call__(self, **kwargs):
         kwargs.update(self.kwargs)
         for flag in dir(self.flags):
             if not flag.startswith('_'):
-                kwargs[flag] = getattr(self.flags, flag)
+                flag_value = getattr(self.flags, flag)
+                kwargs[flag] = flag_value
+        if self.flags.required:
+            self.label.js_options.update({'data-required': 'required'})
         return self._render(**kwargs)
 
     def _update_kwargs(self, **kwargs):
@@ -109,7 +126,8 @@ class Field(Field):
     @property
     def error_messages(self):
         if self.errors:
-            return '<span data-error="error">{}</span>'.format(', '.join(self.errors))
+            return '<span data-error="error">{}</span>'.format(
+                ', '.join(self.errors))
         else:
             return ''
 
