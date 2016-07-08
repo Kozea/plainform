@@ -91,12 +91,20 @@ class Field(Field):
                 kwargs[flag] = getattr(self.flags, flag)
         return self._render(**kwargs)
 
-    def _render(self, **kwargs):
+    def _update_kwargs(self, **kwargs):
         if self.errors:
             kwargs['data-error'] = 'error'
+        label_kwargs = (
+            {'data-required': kwargs['required']}
+            if 'required' in kwargs else {})
+        return kwargs, label_kwargs
+
+    def _render(self, **kwargs):
+        widget_kwargs, label_kwargs = self._update_kwargs(**kwargs)
         return HTMLString(
             '{}\n{}\n{}'.format(
-                self.label, self.widget(self, **kwargs), self.error_messages))
+                self.label(**label_kwargs), self.widget(self, **widget_kwargs),
+                self.error_messages))
 
     @property
     def error_messages(self):
@@ -112,9 +120,11 @@ class BooleanField(BooleanField, Field):
         return self._render(**kwargs)
 
     def _render(self, **kwargs):
+        widget_kwargs, label_kwargs = self._update_kwargs(**kwargs)
         return HTMLString(
             '{}\n{}\n{}'.format(
-                self.widget(self, **kwargs), self.label, self.error_messages))
+                self.widget(self, **widget_kwargs), self.label(**label_kwargs),
+                self.error_messages))
 
 
 class FileField(FileField, Field):
@@ -127,8 +137,11 @@ class RadioField(RadioField, Field):
         return self._render(**kwargs)
 
     def _render(self, **kwargs):
+        widget_kwargs, label_kwargs = self._update_kwargs(**kwargs)
         return HTMLString('<p>{}</p>'.format(self.label.text) + '\n'.join(
-            '{}\n{}'.format(field.widget(field, **kwargs), field.label)
+            '{}\n{}'.format(
+                field.widget(field, **widget_kwargs),
+                field.label(**label_kwargs))
             for field in self))
 
 
@@ -161,8 +174,9 @@ class ButtonField(SubmitField):
         return self._render(**kwargs)
 
     def _render(self, **kwargs):
+        widget_kwargs, label_kwargs = self._update_kwargs(**kwargs)
         return HTMLString('<button {}>{}</button>'.format(
-            html_params(**kwargs), self.label.text))
+            html_params(**widget_kwargs), self.label.text))
 
 
 class StringField(StringField, Field):
