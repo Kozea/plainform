@@ -146,9 +146,7 @@ class RadioField(RadioField, Field):
 
 
 class SelectField(SelectField, Field):
-    def __call__(self, **kwargs):
-        kwargs.update(self.kwargs)
-        return self._render(**kwargs)
+    pass
 
 
 class SelectMultipleField(SelectMultipleField, SelectField):
