@@ -26,7 +26,7 @@ from wtforms.fields.html5 import (
 from wtforms.widgets.html5 import ColorInput
 from wtforms.widgets.core import html_params, HTMLString
 
-__version__ = '0.9.0'
+__version__ = '0.10.0'
 
 
 class Translations:
