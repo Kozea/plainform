@@ -20,7 +20,7 @@ from wtforms.fields import (
     SelectMultipleField, SubmitField, StringField, HiddenField,
     PasswordField, TextAreaField)
 from wtforms.fields.html5 import (
-    SearchField, TelField, URLField, EmailField, DateField, DateTimeField,
+    SearchField, TelField, URLField, EmailField, DateField,
     DateTimeLocalField, IntegerField, DecimalField, IntegerRangeField,
     DecimalRangeField)
 from wtforms.widgets.html5 import ColorInput
@@ -225,12 +225,11 @@ class DateField(DateField, Field):
     pass
 
 
-class DateTimeField(DateTimeField, Field):
-    pass
-
-
 class DateTimeLocalField(DateTimeLocalField, Field):
-    pass
+    def __init__(self, label=None, validators=None,
+                 format='%Y-%m-%dT%H:%M:%S', **kwargs):
+        return super().__init__(
+            label=label, validators=validators, format=format, **kwargs)
 
 
 class IntegerField(IntegerField, Field):
