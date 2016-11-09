@@ -44,7 +44,6 @@ class Form(Form):
     url = URLField('URL')
     email = EmailField('Email')
     date = DateField('Date')
-    datetime = DateTimeField('Date and Time')
     datetimelocal = DateTimeLocalField('Local Date and Time')
     integer = IntegerField('Integer')
     decimal = DecimalField('Decimal')
